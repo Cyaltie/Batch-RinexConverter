@@ -36,6 +36,7 @@ This project aims:
 git clone https://github.com/Cyaltie/Batch-RinexConverter.git
 cd Batch-RinexConverter
 pip install -r requirements.txt
+```
 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_EEAtk_WzpY_h_sYny5qQ-sm7VuxEjtE?usp=sharing)
