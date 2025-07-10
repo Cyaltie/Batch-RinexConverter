@@ -29,7 +29,7 @@ Modes of input include:
 ---
 
 ## ✨ Planned Features (we can use this are as a sort of checklist to be edited when the program is finished.)
-- Takes in raw GNSS data (.m** and .T02) and converts it into Rinex files 🔴
+- Takes in raw GNSS data (.m** and .T02) and converts it into Rinex files 🔴 **87.5% done**
     - For leica sites (.m**) 🔴
         - recognize file type from zip - 100% done 🟢
         - unzip it in a separate folder - 100% done 🟢
@@ -38,7 +38,7 @@ Modes of input include:
         - zip all files from same station to 1 file with correct extension in an output folder - 100% done 🟢
         - handles multiple stations and start and end dates - 100% done 🟢
 
-    - For trimble sites (.T02)<sup>2 🔴
+    - For trimble sites (.T02)<sup>2 🔴 **87.5% done**
         - recognize file type from zip - 100% done 🟢
         - unzip it in a separate folder - 100% done 🟢
         - open cmd to access convertToRinex for conversion - 100% done 🟢
