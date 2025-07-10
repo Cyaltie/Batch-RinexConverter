@@ -55,7 +55,7 @@ Modes of input include:
 
 ---
 
-## 🛠 Prerequisites
+## 🛠 Prerequisites (**To EDIT**)
 
 - Python 3.x
 - Required utilities (`mdb2rinex`, `gfzrnx`, etc.)
@@ -63,7 +63,7 @@ Modes of input include:
 
 ---
 
-## 📦 Installation
+## 📦 Installation (**To EDIT**)
 ```bash
 git clone https://github.com/Cyaltie/Batch-RinexConverter.git
 cd Batch-RinexConverter
