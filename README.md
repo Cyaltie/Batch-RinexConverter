@@ -13,7 +13,7 @@ Modes of input include:
 
 2. Google Colab code that can be updated alongside the "master" file for the program\*
 
-*\* For those opting to use this input, I trust you can set up the installers (i have no clue how to implement the script in colab). Any changes to the script in this way can be pushed by pinging me in messenger.
+*\* For those opting to use this input, I trust you can set up the installers (i have no clue how to implement the script in colab). Any changes to the script in this way can be pushed by pinging me in messenger.*
 
 ---
 
@@ -28,12 +28,31 @@ Modes of input include:
 
 ---
 
-## ✨ Features
-- Converts raw GNSS data to RINEX v2/v3
-- Supports Hatanaka compression
-- Includes daily/hourly file concatenation
-- Works with Leica `.m00` and Trimble `.t02` files
+## ✨ Planned Features (we can use this are as a sort of checklist to be edited when the program is finished.)
+- Takes in raw GNSS data (.m** and .T02) and converts it into Rinex files 🔴
+    - For leica sites (.m**) 🔴
+        - recognize file type from zip - 100% done 🟢
+        - unzip it in a separate folder - 100% done 🟢
+        - open cmd to access mdb2rinex for conversion - 100% done 🟢
+        - use gfzrnx to clean header, logging interval, version change, hatanaka - 25% done 🔴
+        - zip all files from same station to 1 file with correct extension in an output folder - 100% done 🟢
+        - handles multiple stations and start and end dates - 100% done 🟢
 
+    - For trimble sites (.T02)\*\* 🔴
+        - recognize file type from zip - 100% done 🟢
+        - unzip it in a separate folder - 100% done 🟢
+        - open cmd to access convertToRinex for conversion - 100% done 🟢
+        - use gfzrnx to clean header, logging interval, version change, hatanaka - 25% done 🔴
+        - zip all files from same station to 1 file with correct extension in an output folder - 100% done 🟢
+        - handles multiple stations - 100% done 🟢
+
+- Supports Hatanaka compression 🔴
+- Works with multiple Leica `.m00` and Trimble `.t02` files simultaneously 🔴
+- Integrate a UI (preferably based on ver4\.3c ) to make the program user friendly 🟢`***`|🔴`****` 
+
+\*\* not debugged or tested
+`***` we have a preliminary UI (ver4\.3C) w/o conversion logic integrated
+`****` since logic hasn't been integrated it is still incomplete
 ---
 
 ## 🛠 Prerequisites
