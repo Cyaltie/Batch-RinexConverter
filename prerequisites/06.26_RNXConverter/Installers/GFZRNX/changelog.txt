@@ -1,0 +1,471 @@
+---------------------------------------------------------------------------------
+|                         VERSION 1.10-7329 (2018-03-06)
+---------------------------------------------------------------------------------
+[06:2018-03-06] - new - additional information in -meta outputs, see "sysprn",
+                        "sysobs", "sysfrq", "systyp" ...
+
+[05:2018-03-06] - fix in nav. file header merge for label (IONOSPHERIC CORR)
+
+[04:2018-02-27] - fix - digit tests in nav. file headers fail in case of "D" in
+                        exponential number representation. (0.567D-05) 
+
+[03:2018-02-23] - new - adding "jsonp" (pretty json) output format to "-meta"
+                        output types 
+
+[02:2018-02-23] - fix - fully activating erroneously added key "sysprn" to
+                        "-meta full "output.
+
+[01:2018-02-23] - fix - adding lost "md5" key to -meta output.
+
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.09-7313 (2018-02-21)
+---------------------------------------------------------------------------------
+[10:2018-01-18] - fix - header edit with the same input and output filename is now
+                        possible (-f).
+
+[09:2018-01-18] - fix - crux input for meteo header records 'SENSOR MOD/TYPE/ACC'
+                        using time intervals got wrong time intervals via input.
+
+[08:2017-12-18] - fix - better header edit config input (-crux) allowing the use
+                        of "," in header field elements (up to now conflicting with the
+			"," field separator).
+
+[07:2017-12-13] - fix - in file split for files with gaps greater than the split interval
+                        (e.g. wrong "TIME OF FIRST OBS" header entry)
+			
+[06:2017-12-13] - fix - rinex 2.11 format conform leading '0' for years < 10 in epoch
+                        record.
+
+[05:2017-11-27] - fix - internal (data) header in front of observetion (not after) in
+                        case of RINEX-3
+
+[04:2017-11-23] - new - enhanced merge of "SYS PHASE SHIFT" header records including
+                        creation of internal header records (in case of phase shift changes)
+                        via  obs. data file splicing.
+
+[03:2017-11-23] - fix - support for "empty" "SYS / # / OBS TYPES" records
+
+[02:2017-11-09] - fix - erroneous extraction of antenna height via "-meta" modes
+                         (ANTENNA: DELTA H/E/N)
+
+[01:2017-11-09] - fix - via file splice "TIME OF FIRST OBS" was always set to begin
+                        of day (0  0  0.0).
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.08-7186 (2017-07-17)
+---------------------------------------------------------------------------------
+[05:2017-07-16] - new - intrinsic crux-handling for the "GLONASS COD/PHS/BIS#"
+                        erroneous header record labels. (see gfzrnx -show_crux)
+
+[04:2017-07-16] - fix - some comfort features using crux-files for header editing
+
+[03:2017-07-13] - new - new string substitutes set implemented to be used for
+                        crux COMMENT records to be added and for the single header
+			element insert/update.
+			substitutes: uSeR tImEsTaMp hOsTnAmE hOsTdOmAiNnAmE
+			             dOmAiNnAmE pRoGrAm
+
+[02:2017-07-13] - new - the "PGM / RUN BY / DATE" header record is not manipulated
+                        by gfzrnx anymore. this allows to edit (crux) this record
+			by the user. the use of gfzrnx is now documented by a
+			"COMMENT" line after the "PGM / RUN BY / DATE" record.
+
+[01:2017-07-13] - fix - station list extraction in crux files (in some cases only
+                        first station of a station list is used and the others
+		        are ignored)
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.07-7176 (2017-06-09)
+---------------------------------------------------------------------------------
+[20:2017-06-09] - missing data epoch in case of a following internal header with
+                  more than 99 records.
+
+[19:2017-05-29] - new - full 9-char station name support added including -site, -crux,
+                        "MARKER NAME" etc. handling.
+
+[18:2017-05-23] - fix - missing header labelname via adding of new header record (label)
+                        via header editing (crux).
+
+[17:2017-04-13] - fix - corrupt output of header record "GLONASS COD/PHS/BIS" (RINEX-3)
+                        if missing in input file and added by gfzrnx in case of availability
+			of glonass 3rd frequency observations.
+
+[16:2017-04-06] - fix - "TIME OF FIRST OBS" at 00:00:00 in case of file splice for
+                        data not beginning at 00:00:00.
+
+[15:2017-04-05] - several enhancements detecting/handling erroneous files (e.g. via
+                  splice operations, with incomlete or erroneous header information,
+		  new intrinsic crux-header edit records added, etc.)
+
+[14:2017-03-20] - new extension letters for non standard RINEX-2 nav. file naming for BDS(c),
+                  QZSS(j),IRNSS(i) single system nav. files.
+
+[13:2017-03-20] - correcting erroneus BDS nav. records providing GPS-week instaed
+                  of BDS-week in Broadcast ORBIT-5 record.
+
+[12:2017-03-14] - fix - the data time interval determination in case of millisecond
+                        clock jumps gave INTERVAL header entries like
+			14.999 instead of 15.000 or 0.999 instead of 1.000.
+
+[11:2017-03-08] - fix - "-meta full" after implementing "-mata medium" (no output
+                        produced)
+
+[10:2017-03-02] - fix - corrupted headers with scientific notation (win32/64 only),
+                        number if exponent digits differs compared to other
+			operating systems for some formats (e.g '%19.12e').
+
+[ 9:2017-02-28] - -h, --help outputs are made to STDOUT to allow a simple "| less".
+
+[ 8:2017-02-28] - new -meta type "medium".
+
+[ 7:2017-02-13] - fix - ignore empty input files in case of file splice (ended up
+                  in an error).
+
+[ 6:2017-02-13] - revised site name handling (file name / header MARKER NAME ...)
+
+[ 5:2017-02-09] - revised -ot handling (obs. type selection), now left aligned
+                  pattern matching only
+
+[ 4:2017-02-09] - extended -ots handling (obs. type sorting). sort by frequency added.
+
+[ 3:2017-02-09] - fix - automatic file naming for RINEX-2 (missing leading '0' for
+                  two digit year in extension (e.g. 2003 -> 3 instead of 03).
+
+[ 2:2017-01-09] - changed handling in overlapping use of "-satsys" and "-obs_types".
+                  "-satsys" is prioritized. in case of extra sat. system information
+                  in "-obs_types" a warning is ussued. up to now this led to an error.
+
+[ 1:2016-11-10] - new: do same operation for multiple files with a single command
+                       call (-single_file -sifl)
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.06-6962 (2016-11-07)
+---------------------------------------------------------------------------------
+[12:2016-10-13] - the output format of RINEX-2 -> RINEX-3 transitions has been
+                  changed to version 3.01 where empty signal/attribute identifiers
+		  for the 3-char observation types are supported.
+		  RINEX-3.02/3.03 input files are output in version 3.01 if they contain
+		  empty signal/attribute identifiers in the observation types.
+
+[11:2016-10-07] - fix - automatic file-naming using RINEX-3 long input file name
+
+[10:2016-10-07] - fix - handling of unsupported obs. types in rinex-2
+
+[ 9:2016-10-06] - fix - header COMMENT after file conversion using "rename: obs"
+                  header editing mode (-crux).
+
+[ 8:2016-09-30] - fix - for -out_obs_map
+
+[ 7:2016-09-30] - revised "rename: obs" handling
+
+[ 6:2016-09-21] - fix - for Data/Dumper error via command call (some debug parts
+                  were left in code):
+                  Can't load '/tmp/p2xtmp-31019/auto/Data/Dumper/Dumper.so'
+		  for module Data::Dumper:
+		  /tmp/p2xtmp-31019/auto/Data/Dumper/Dumper.so: failed to map segment from
+                  shared object: Operation not permitted at PERL2EXE_STORAGE/DynaLoader.pm line 118.
+
+[ 5:2016-09-21] - fix - very slow handling of large file lists in splice
+                  operations (e.g. all hourly nav. files of a single day)
+
+[ 4:2016-09-15] - new "-crux" feature "rename: obs" for obs. types renaming
+                  implemented
+
+[ 3:2016-09-09] - documentation update for crux-feature "rename: prn/obs"
+
+[ 2:2016-09-09] - new "-crux" feature "rename: prn" implemented
+
+[ 1:2016-09-06] - fix: for "END OF HEADER" in custom internal header records
+                  (omitted in output file)
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.05-6819 (2016-09-05)
+---------------------------------------------------------------------------------
+[18:2016-08-25] - extended RINEX-3 header checks.
+
+[17:2016-08-22] - extended file name expansion (globbing) including the whole
+                  path (for ms windows versions).
+
+[16:2016-08-18] - new feature using splice and split together in a single
+                  command call (currently observation data only).
+
+[15:2016-08-18] - revised file name expansion (globbing) for ms windows versions.
+
+[14:2016-08-11] - new handling of data with unsupported observation types
+                  (data omitted in output C0, L0, S0, ...)
+
+[13:2016-07-28] - fixed: long file renaming (::RX3::) using 4-char station name
+                         with digits on the command line
+
+[12:2016-07-27] - fixed: head line "RINEX VERSION / TYPE" with correct
+                         sat.system identifier via split operations.
+
+[11:2016-07-27] - fixed: splice of files with different satellite systems
+
+[10:2016-06-29] - fixed: missing epochs in case of unsorted input file list
+                  for new splice mode
+
+[9:2016-06-24] - new feature -4to9 for (re)naming operations (RINEX-3)
+
+[8:2016-06-16] - fix for data sampling with custom internal header records
+
+[7:2016-06-06] - fix for full line replacements in header edit (had been
+                 commented out by fault)
+
+[6:2016-05-31] - memory usage for splice operations reduced to 50%.
+
+[5:2016-05-26] - fix for "XXX" contry code in output file name splicing
+                 RINEX-3-type named input files
+
+[4:2016-05-10] - fix for -meta "dump" format
+
+[3:2016-05-10] - add missing mandatory header records (empty)
+
+[2:2016-04-27] - new obs. file meta data extraction via -meta
+
+[1:2016-04-13] - GPS M1,M2 observations now supported
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.04-6582 (2016-04-12)
+---------------------------------------------------------------------------------
+[8:2016-04-12] - RINEX 3.03 conform BDS B1 obs.types C2,L2,...
+                 now used in unofficial conversion to RINEX-2
+
+[7:2016-04-08] - fix for RINEX 3.03 conform BDS B1 obs.types C2x,L2x,...
+
+[6:2016-03-30] - fix for multiple nav. records per epoch splicing rinex-3
+                 nav. files.
+
+[5:2016-03-29] - fix for unsupported header records in nav. files after
+                 conversion from rinex version 3 to version 2.
+
+[4:2016-03-16] - enhanced compact fdiff output
+
+[3:2016-03-16] - -show_crux implemented (output of crux-config.-file
+                  interpretation by the program for check/debug)
+
+[2:2016-03-14] - fix for crux-file obs. types extraction (pattern matching)
+
+[1:2016-03-11] - fix for crux-file epoch inputs (end epoch in "+" environment)
+
+---------------------------------------------------------------------------------
+|                         VERSION 1.03-6491 (2016-03-07)
+---------------------------------------------------------------------------------
+[d:2016-03-07] - small fix for meteo data sampling in some cases
+
+[c:2016-03-04] - fix for wrong sampling if no INTERVAL header element given.
+                 default tolerance range values for sampling epoch check changed.
+
+[b:2016-03-04] - fix for crux-file epoch inputs
+
+[a:2016-03-04] - fix for -smp parameter check
+                 Value "30:0.5" invalid for option smp (real number expected)
+
+[9:2016-03-04] - fix for -ot parameter check in case of only one sat. system
+                 which gave the following error
+		 "syntax error in -[ot|obs_types] -> missing +"
+
+[8:2016-03-03] - -kaot fix for stderr outputs
+                 Argument "  91142633.571 9" isn't numeric in numeric gt (>) ...
+
+[7:2016-03-02] - bugfix for -fdiff for obs. type output order in special cases
+
+[6:2016-03-02] - delete of "illegal" obs. types covered with data. this caused
+                 an XX obs. type in the obs. types header record.
+
+[5:2016-03-01] - bugfix using -hded in connection with automatic file naming
+                 -fout ::RX3::
+
+[4:2016-02-26] - bugfix - automatic file naming ::RX2:: for a MARKER NAME modified
+                 via header editing.
+
+[3:2016-02-19] - bugfix in -fdiff mode handling missing obs. in one of the files
+
+[2:2016-02-05] - bugfix in -fdiff mode, i had tested with too simple examples
+                 (Can't use an undefined value as a HASH reference at ...)
+
+[1:2016-02-05] - bugfix in header generation handling a file with a single epoch
+---------------------------------------------------------------------------------
+|                         VERSION 1.02-6427 (2016-02-03)
+---------------------------------------------------------------------------------
+[9:2016-02-03] - some improvements handling erroneous input files
+
+[8:2016-02-02] - bugfix: frequ. '0' in 'GLONASS SLOT / FRQ #' was set to ' ' (empty)
+
+[7:2016-02-01] - new file comparison feature (-fdiff)
+
+[6:2016-01-28] - revised internal data-header handling
+
+[5:2016-01-15] - introducing a -ots (obs. types sort) command line parameter
+                 for gnss obs. files.
+
+[4:2016-01-15] - bugfix handling data-header lines (gnss obs. files)
+
+[3:2016-01-15] - introduction of -kaot (keep all observation types) command line
+                 parameter
+
+[2:2016-01-15] - [windows] bugfix for -fout filename handling with a filename
+                 without a path component
+
+[1:2016-01-15] - bugfix in file sampling for non nominal data epochs
+                 (e.g. ms shifts) after adding high rate support. this led to
+		 an updated -smp command line parameter handling.
+---------------------------------------------------------------------------------
+|                      RELEASE OF VERSION 1.01 (2015-12-06)
+---------------------------------------------------------------------------------
+[1:2015-12-06] - bugfix in nominal rename of rinex nav. files (-nomren23).
+                 in case of single sat. system files of BDS SBS QZS IRN
+		 the 'M' (mixed) identifier was used.
+---------------------------------------------------------------------------------
+|                      RELEASE OF VERSION 1.00 (2015-12-04)
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+|                             DEVEL VERSION 0.99
+---------------------------------------------------------------------------------
+[5:2015-11-30] - extension of header edit configuration. enhanced epoch
+                 dependent settings allow a better station-block-wise config
+		 file.
+[4:2015-11-30] - bugfix - nominal rename with -smp command line parameter after
+                 high rate support.
+
+[3:2015-10-17] - support for sample rates below 1s. new max. time resolution is now
+                 1 ms.
+[3:2015-10-17] - bugfix - remove of leading blanks of COMMENT lines
+
+[2:2015-10-13] - updated manual (-hded)
+[2:2015-10-13] - header edit only feature implemented (-hded)
+
+[1:2015-10-08] - bugfix handling values with exponential notation (D) in RINEX nav.
+                 file headers (0.123456789D-10)
+
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.98_RC2 (2015-10-07)
+---------------------------------------------------------------------------------
+[3:2015-10-07] - updated manual
+[3:2015-10-07] - nominal renaming support for RINEX-3 files with RINEX-2 style
+                 file names.
+
+[2:2015-10-02] - extension of header editing to data type and epoch interval
+                 dependent settings (see updated manual)
+[2:2015-10-02] - delete of "empty" PRNs on the single epoch level
+
+[1:2015-09-17] - updated manual
+[1:2015-09-17] - new option -enb (extended nav. boundaries) using nominal
+                 automatic file naming for nav. files
+[1:2015-09-17] - automatic filenaming bug (rounding error by 1s) via
+                 automatic nominal file name compiling
+[1:2015-09-17] - new gfzrnx 'PGM / RUN BY / DATE' PGM identifier
+                 gfzrnx-version-build-version (gfzrnx-0.98-6086)
+
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.97_RC1 (2015-09-08)
+---------------------------------------------------------------------------------
+- revised RINEX-3 -> RINEX-2 format conversion with new conversion scheme using
+  signal priorities. see updated documentation for details.
+
+
+[1:2015-08-14] - updated manual
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.96 (2015-08-13)
+--------------------------------------------------------------------------------
+- revised automatic file naming (real,nominal)
+- updated/extended header editing options
+- minor enhancements and bug fixes
+- linux 32 bit version
+- updated manual
+
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.95 (2015-06-29)
+---------------------------------------------------------------------------------
+RINEX Header Editing available
+minor bug fixes
+
+---------------------------------------------------------------------------------
+|                        UPDATES/FIXES since version 0.94
+---------------------------------------------------------------------------------
+[2:2015-06-26] bugfix header observation statistics
+               ( in case of epoch interval manipulations of a single file
+               the input obs. statistsics was shown in the header which does
+               not fit to the output file )
+
+[1:2015-06-11] Documentation Update
+
+[1:2015-06-11] RINEX Header Editing available
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.94 (2015-05-29)
+---------------------------------------------------------------------------------
+FIXED a serious bug in RINEX nav. files splicing
+
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.93 (2015-04-30)
+---------------------------------------------------------------------------------
+NEW: support for upcoming version RINEX 3.03
+- IRNSS support
+- change of BDS B1 obs. types naming
+
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.92 (2015-04-22)
+---------------------------------------------------------------------------------
+The Standard for epoch interval handling has changed. Only via the new command
+line parameter "-sei" (strict epoch interval) a strict file name conform epoch
+interval handli!ng is done.
+
+---------------------------------------------------------------------------------
+|                        UPDATES/FIXES since version 0.91
+---------------------------------------------------------------------------------
+[2:2015-04-17] bugfix: Galileo nav. RINEX-3 to RINEX-2 conversion
+
+[2:2015-04-17] better memory management via file splice
+
+[2:2015-04-08] bugfix: sat.system-selection, prn-selection using RINEX-2 as input
+
+[1:2015-03-26] Documentation update (missing -prn, -no_prn description).
+
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.91 (2015-03-25)
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+|                        UPDATES/FIXES since version 0.9
+---------------------------------------------------------------------------------
+
+[9] NEW: ASCII timeplots for RINEX observation files with flexible time bins.
+
+[8] NEW: PRN selection (positive/negative) via -prn and/or -no_prn command line parameters.
+
+[6] Erroneous automatic file names given with path component in MS Windows version.
+
+[5] Erroneous handling of duplicate epochs in observation files.
+
+[4] More robust navigation file input (avoiding error messages).
+
+[3] Documentation updates due to support requests.
+
+[2] the following warning is added to the RINEX header in case of format conversion:
+
+                                                            COMMENT
+**********************************************************  COMMENT
+*              WARNING - FORMAT CONVERSION               *  COMMENT
+*  ----------------------------------------------------  *  COMMENT
+*  The data values (observation, loss of lock indicator  *  COMMENT
+*      (LLI), signal strength) are left as they are.     *  COMMENT
+*  The LLI meaning differs between versions 2 and 3 and  *  COMMENT
+*    the Interpretation of bit 1 and 2 has to be used    *  COMMENT
+*                  with caution !!!                      *  COMMENT
+**********************************************************  COMMENT
+                                                            COMMENT
+RINEX 3 -> 2 TYPE CONVERSION DETAILS:                       COMMENT
+-------------------------------------                       COMMENT
+   G C1C -> C1                                              COMMENT
+   G C2X -> C2                                              COMMENT
+   G C5X -> C5                                              COMMENT
+   G L1C -> L1                                              COMMENT
+   G L2W -> L2                                              COMMENT
+...
+
+
+[1] handling of METEO-files with wrong version number given in the RINEX header.
+---------------------------------------------------------------------------------
+|                        NEW VERSION 0.90 (2015-02-13)
+---------------------------------------------------------------------------------
