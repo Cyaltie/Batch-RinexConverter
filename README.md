@@ -13,7 +13,7 @@ Modes of input include:
 
 2. Google Colab code that can be updated alongside the "master" file for the program<sup>1
 
-<sup>1 *For those opting to use this input, I trust you can set up the installers (i have no clue how to implement the script in colab). Any changes to the script in this way can be pushed by pinging me in messenger.*
+1 *For those opting to use this input, I trust you can set up the installers (i have no clue how to implement the script in colab). Any changes to the script in this way can be pushed by pinging me in messenger.*
 
 ---
 
@@ -50,8 +50,8 @@ Modes of input include:
 - Works with multiple Leica `.m00` and Trimble `.t02` files simultaneously 🔴
 - Integrate a UI (preferably based on ver4\.3c ) to make the program user friendly 🟢|🔴 <sup>3
 
-<sup>2 not debugged or tested  
-<sup>3 we have a preliminary UI (ver4\.3C) w/o conversion logic integrated; since logic hasn't been integrated it is still incomplete
+2 not debugged or tested  
+3 we have a preliminary UI (ver4\.3C) w/o conversion logic integrated; since logic hasn't been integrated it is still incomplete
 
 ---
 
