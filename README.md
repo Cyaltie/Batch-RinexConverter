@@ -1,7 +1,19 @@
 # Batch Rinex Converter
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_EEAtk_WzpY_h_sYny5qQ-sm7VuxEjtE?usp=sharing)
+
 This project aims:
 - convert an original batch script converter into a python based converter that converts leica/trimble raw data into Rinex data.
 - add an interactive user interface that adds qol aspects to the converter for easy user access.
+
+This github repository serves as a way for members to collaborate on the creation of the program.
+Modes of input include:
+
+1. Downloading the repository into their local computer and pushing updates through Git.
+
+2. Google Colab code that can be updated alongside the "master" file for the program\*
+
+*\* For those opting to use this input, I trust you can set up the installers (i have no clue how to implement the script in colab). Any changes to the script in this way can be pushed by pinging me in messenger.
 
 ---
 
@@ -39,4 +51,3 @@ pip install -r requirements.txt
 ```
 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_EEAtk_WzpY_h_sYny5qQ-sm7VuxEjtE?usp=sharing)
