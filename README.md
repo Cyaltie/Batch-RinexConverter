@@ -73,6 +73,10 @@ Modes of input include:
     - To install Git you may follow this guide starting @ 2:11 to 4:55
     [![Watch on YouTube](https://img.shields.io/badge/Watch_on-YouTube-red?logo=youtube)](https://youtu.be/tRZGeaHPoaw?si=NV-0TO8qYmWDUhnu&t=131)
 
+Once Git is installed, open Git Bash software it should look like this:
+![Alt text](Resources/gitpreview.png)
+
+
 ```bash
 git clone https://github.com/Cyaltie/Batch-RinexConverter.git
 cd Batch-RinexConverter
