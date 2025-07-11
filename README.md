@@ -55,19 +55,25 @@ Modes of input include:
 
 ---
 
-## 🛠 Prerequisites (**To EDIT**)
+## 🛠 Prerequisites (**For code input**)
 
-- Python 3.x
-- Required utilities (`mdb2rinex`, `gfzrnx`, etc.)
-- See [prerequisites folder](prerequisites/) for setup.
+- Python 3.x installed
+- Interpreter installed (VSCode, notepad++, etc.)
+- Required utilities (`mdb2rinex`, `gfzrnx`, etc.) (have at least 15 mb free space for all required dependecies) refer to Installation for setup [prerequisites folder](prerequisites/)
+- Google Colab (optional)
+- Git (if opt to use github and edit files locally) See git push guide for details.
 
 ---
 
-## 📦 Installation (**To EDIT**)
+## 📦 Installation 
+
+## - Local installation
 ```bash
 git clone https://github.com/Cyaltie/Batch-RinexConverter.git
 cd Batch-RinexConverter
 pip install -r requirements.txt
 ```
+
+## -
 
 
