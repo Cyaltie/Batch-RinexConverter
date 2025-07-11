@@ -12,7 +12,8 @@ This guide is for contributors who want to propose changes to this repository, e
 
 ### 2. Download the repository  
 - Click **Code > Download ZIP** in the GitHub repo.  
-  ![Download ZIP](Resources/githubstep2.png)  
+  ![Download ZIP](Resources/githubstep2.png)
+  ![Download ZIP](Resources/githubstep2a.png)    
 - Unzip it to:  
   `C:/Users/<YourName>/Batch-RinexConverter`  
   ![Unzip Folder](Resources/githubstep2b.png)
@@ -60,4 +61,13 @@ upstream https://github.com/Cyaltie/Batch-RinexConverter.git (push)
 ```
 
 ## 🌿 Creating a Branch and Making Changes
-- 
+
+### 1. Create a new feature branch
+```bash
+git checkout -b my-feature-branch
+```
+### 2. Make edits in the folder
+
+### 3. Stage and commit your changes
+
+### 4. Push to your fork
