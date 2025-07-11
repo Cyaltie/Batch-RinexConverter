@@ -73,6 +73,9 @@ If you're a collaborator and want to propose changes, follow the detailed step-b
 
 ➡️ [**View the Collaborator Guide**](Collaborator_Guide.md)
 
+➡️ [**View the Prerquisites Guide**](Prerequisite_Guide.md)
+
+
 ## -
 
 
