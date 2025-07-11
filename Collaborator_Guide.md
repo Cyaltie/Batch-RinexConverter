@@ -6,7 +6,7 @@ This guide is for contributors who want to propose changes to this repository, e
 
 ## 📑 Table of Contents
 
-- [📂 Local Installation](#-local-installation)
+- [📂 Local Installation](# local-installation)
 - [🔱 Creating a Fork Branch in GitHub](#-creating-a-fork-branch-in-github)
 - [🔧 First-Time Git Setup](#-first-time-git-setup)
 - [🌿 Creating a Branch and Making Changes](#-creating-a-branch-and-making-changes)
@@ -14,7 +14,7 @@ This guide is for contributors who want to propose changes to this repository, e
 - [🔄 Syncing Your Fork With Latest Changes](#-syncing-your-fork-with-latest-changes)
 - [💻 Resuming Work After Reboot](#-resuming-work-after-reboot)
 
-## 📂 Local Installation [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 📂 Local Installation {#-local-installation} [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 
 ### 1. Make sure Git is installed  
 - Install Git following this YouTube guide (from 2:11 to 3:13):  
