@@ -70,17 +70,51 @@ Modes of input include:
 ## • Local installation
 
 1\. Make sure Git is installed.<br>
-    - To install Git you may follow this guide starting @ 2:11 to 4:55
+    - To install Git you may follow this guide starting @ 2:11 to 3:13
     [![Watch on YouTube](https://img.shields.io/badge/Watch_on-YouTube-red?logo=youtube)](https://youtu.be/tRZGeaHPoaw?si=NV-0TO8qYmWDUhnu&t=131)
 
-Once Git is installed, open Git Bash software it should look like this:
+Once Git is installed, open Git Bash software. It should look like this:
 ![Alt text](Resources/gitpreview.png)
 
+2\. Download all files. And setup local git repository on local computer<br>
+    - in the github repo, click on code and click download zip.
+    ![Alt text](Resources/githubstep2.png)
+    ![Alt text](Resources/githubstep2a.png)  
+
+    - After download, unzip the folder into C:/Users/User*/Batch-RinexConverter. no need to rename the folder.  
+
+![Alt text](Resources/githubstep2b.png)  
+
+3\. configure git bash. <br>
+    - In order to push changes on the program, Git Bash must be comfigured so that the git repo created locally will be merged into the github repo.
+    - For this, open Git Bash and type
 
 ```bash
-git clone https://github.com/Cyaltie/Batch-RinexConverter.git
-cd Batch-RinexConverter
-pip install -r requirements.txt
+git config -- global user.name "Your-Name"
+```
+Press enter, then type
+
+```bash
+git config -- global user.email "your up email (for ojt) or yung namria email niyo po maam"
+```
+Press enter.
+
+    - To initialize your git repo (the on you downloaded)
+    on the git bash cmd, type  
+
+```bash
+cd C:/Users/User/Batch-RinexConverter/Batch-RinexConverter-main
+```
+![Alt text](Resources/githubstep3.png)
+
+    - press enter and then type:
+
+```bash
+git init
+```
+    - now type:
+```bash
+git remote add origin https://github.com/Cyaltie/Batch-RinexConverter.git
 ```
 
 ## -
