@@ -6,33 +6,40 @@ This guide is so the code will execute properly. Once you finish this guide. The
 
 ## 📑 Table of Contents
 
-- [🔁 MdbConverter install](#-submitting-a-pull-request)
-- [📂 7z install](#-local-installation)
-- [🔱 ConvertToRinex install](#-creating-a-fork-branch-in-github)
-- [🔧 GFZRNX Install](#-first-time-git-setup)
-- [🌿 Hatanaka install](#-creating-a-branch-and-making-changes)
+- [🔁 MdbConverter install](#-mdbconverter-install)
+- [📂 7z install](#-7z-install)
+- [🔱 ConvertToRinex install](#-converttorinex-install)
+- [🔧 GFZRNX Install](#-gfzrnx-install)
+- [🌿 Hatanaka install](#-hatanaka-install)
 
 
 ## 🔁 MdbConverter install  
 
 [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 
-### 1. Make sure Git is installed  
-- Install Git following this YouTube guide (from 2:11 to 3:13):  
-  [![Watch on YouTube](https://img.shields.io/badge/Watch_on-YouTube-red?logo=youtube)](https://youtu.be/tRZGeaHPoaw?si=NV-0TO8qYmWDUhnu&t=131)
+### 1. Extract mdb2rinex.exe in mdb2rnx folder  
+- open your local git repo in windows file explorer. it should be in `C:/Users/<YourName>/Batch-RinexConverter/UsersUserBatch-RinexConverter`  
 
-### 2. Download the repository  
-- Click **Code > Download ZIP** in the GitHub repo.  
-  ![Download ZIP](Resources/githubstep2.png)
-  ![Download ZIP](Resources/githubstep2a.png)    
-- Unzip it to:  
-  `C:/Users/<YourName>/Batch-RinexConverter`  
-  ![Unzip Folder](Resources/githubstep2b.png)
+![Local git repo](Resources/gitprereq1.png)
+
+- go to the prerequisites folder and open the installers folder.
+  ![Local git repo](Resources/gitprereq2.png)
+  ![Local git repo](Resources/gitprereq3.png)
+
+- open MdbConv folder and open the included zip file
+![Local git repo](Resources/gitprereq4.png)
+
+- open File Explorer. Go to your C drive and create a folder named "MdbConv"
+![Local git repo](Resources/gitprereq5.png)
+
+- Extract the mdb2rinex.exe into the MdbConv in C drive by dragging the exe into the folder
+![Local git repo](Resources/gitprereq6.png)
 
 ---
 ## 📂 7z install  
 
 [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+
 - To avoid having conflicts with the main branch (where owner is working), each collaborator is recommended to create their own fok of the github repo.
 ### 1. Go to the main repo page.
 -  click on the **Fork** on the top-right corner.
