@@ -67,78 +67,12 @@ Modes of input include:
 
 ## 📦 Installation 
 
-## • Local installation
+## 📖 Contributor Guide
 
-1\. Make sure Git is installed.<br>
-    - To install Git you may follow this guide starting @ 2:11 to 3:13
-    [![Watch on YouTube](https://img.shields.io/badge/Watch_on-YouTube-red?logo=youtube)](https://youtu.be/tRZGeaHPoaw?si=NV-0TO8qYmWDUhnu&t=131)
+If you're a collaborator and want to propose changes, follow the detailed step-by-step guide here:  
 
-Once Git is installed, open Git Bash software. It should look like this:
-![Alt text](Resources/gitpreview.png)
+➡️ [**View the Collaborator Guide**](COLLABORATORS_GUIDE.md)
 
-2\. Download all files. And setup local git repository on local computer<br>
-    - in the github repo, click on code and click download zip.
-    ![Alt text](Resources/githubstep2.png)
-    ![Alt text](Resources/githubstep2a.png) <br>
-
-
-- After download, unzip the folder into C:/Users/User*/Batch-RinexConverter. no need to rename the folder.  
-
-![Alt text](Resources/githubstep2b.png)  
-
-3\. Configure git bash. <br>
-    - In order to push changes on the program, Git Bash must be configured so that the git repo created locally will be merged into the github repo.
-    - For this, open Git Bash and type
-
-```bash
-git config -- global user.name "Your-Name"
-```
-Press enter, then type
-
-```bash
-git config -- global user.email "your up email (for ojt) or yung namria email niyo po maam"
-```
-Press enter.
-
-- To initialize your git repo (the one you downloaded). on the git bash cmd, type  
-
-```bash
-cd C:/Users/User/Batch-RinexConverter/Batch-RinexConverter-main
-```
-![Alt text](Resources/githubstep3.png)<br>
-
-- press enter and then type:
-
-```bash
-git init
-```
-- now type:
-
-```bash
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-```
-- add the original repo as the ```upstream``` repo  
-
-```bash
-git remote add upstream https://github.com/<owner-username>/<repo-name>.git
-```
-- Verify the remotes using this:
-
-```bash
-git remote -v
-```
-
-- You should see something like this:  
-
-```bash
-origin   https://github.com/<your-username>/<repo-name>.git (fetch)
-origin   https://github.com/<your-username>/<repo-name>.git (push)
-upstream https://github.com/Cyaltie/Batch-RinexConverter.git (fetch)
-upstream https://github.com/Cyaltie/Batch-RinexConverter.git (push)
-
-```  
-
-- Now you can edit any files in the C:/Users/User/Batch-RinexConverter/Batch-RinexConverter-main folder and if you want to commit changes
 ## -
 
 
