@@ -71,7 +71,7 @@ Modes of input include:
 
 If you're a collaborator and want to propose changes, follow the detailed step-by-step guide here:  
 
-➡️ [**View the Collaborator Guide**](COLLABORATORS_GUIDE.md)
+➡️ [**View the Collaborator Guide**](Collaborator_Guide.md)
 
 ## -
 
