@@ -79,14 +79,15 @@ Once Git is installed, open Git Bash software. It should look like this:
 2\. Download all files. And setup local git repository on local computer<br>
     - in the github repo, click on code and click download zip.
     ![Alt text](Resources/githubstep2.png)
-    ![Alt text](Resources/githubstep2a.png)  
+    ![Alt text](Resources/githubstep2a.png) <br>
 
-    - After download, unzip the folder into C:/Users/User*/Batch-RinexConverter. no need to rename the folder.  
+
+- After download, unzip the folder into C:/Users/User*/Batch-RinexConverter. no need to rename the folder.  
 
 ![Alt text](Resources/githubstep2b.png)  
 
-3\. configure git bash. <br>
-    - In order to push changes on the program, Git Bash must be comfigured so that the git repo created locally will be merged into the github repo.
+3\. Configure git bash. <br>
+    - In order to push changes on the program, Git Bash must be configured so that the git repo created locally will be merged into the github repo.
     - For this, open Git Bash and type
 
 ```bash
@@ -99,24 +100,45 @@ git config -- global user.email "your up email (for ojt) or yung namria email ni
 ```
 Press enter.
 
-    - To initialize your git repo (the on you downloaded)
-    on the git bash cmd, type  
+- To initialize your git repo (the one you downloaded). on the git bash cmd, type  
 
 ```bash
 cd C:/Users/User/Batch-RinexConverter/Batch-RinexConverter-main
 ```
-![Alt text](Resources/githubstep3.png)
+![Alt text](Resources/githubstep3.png)<br>
 
-    - press enter and then type:
+- press enter and then type:
 
 ```bash
 git init
 ```
-    - now type:
+- now type:
+
 ```bash
-git remote add origin https://github.com/Cyaltie/Batch-RinexConverter.git
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+```
+- add the original repo as the ```upstream``` repo  
+
+```bash
+git remote add upstream https://github.com/<owner-username>/<repo-name>.git
+```
+- Verify the remotes using this:
+
+```bash
+git remote -v
 ```
 
+- You should see something like this:  
+
+```bash
+origin   https://github.com/<your-username>/<repo-name>.git (fetch)
+origin   https://github.com/<your-username>/<repo-name>.git (push)
+upstream https://github.com/Cyaltie/Batch-RinexConverter.git (fetch)
+upstream https://github.com/Cyaltie/Batch-RinexConverter.git (push)
+
+```  
+
+- Now you can edit any files in the C:/Users/User/Batch-RinexConverter/Batch-RinexConverter-main folder and if you want to commit changes
 ## -
 
 
