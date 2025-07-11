@@ -14,7 +14,9 @@ This guide is for contributors who want to propose changes to this repository, e
 - [🔄 Syncing Your Fork With Latest Changes](#-syncing-your-fork-with-latest-changes)
 - [💻 Resuming Work After Reboot](#-resuming-work-after-reboot)
 
-## 📂 Local Installation [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 📂 Local Installation  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 
 ### 1. Make sure Git is installed  
 - Install Git following this YouTube guide (from 2:11 to 3:13):  
@@ -29,7 +31,9 @@ This guide is for contributors who want to propose changes to this repository, e
   ![Unzip Folder](Resources/githubstep2b.png)
 
 ---
-## 🔱 Creating a fork branch in GitHub [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 🔱 Creating a fork branch in GitHub  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 - To avoid having conflicts with the main branch (where owner is working), each collaborator is recommended to create their own fok of the github repo.
 ### 1. Go to the main repo page.
 -  click on the **Fork** on the top-right corner.
@@ -37,7 +41,9 @@ This guide is for contributors who want to propose changes to this repository, e
 
 This creates a copy of the repository under your own github account.
 
-## 🔧 First-Time Git Setup [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 🔧 First-Time Git Setup  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 
 ### 1. Open Git Bash and configure Git [only once] (do it line-by-line)  
 ```bash
@@ -70,7 +76,9 @@ upstream https://github.com/Cyaltie/Batch-RinexConverter.git (fetch)
 upstream https://github.com/Cyaltie/Batch-RinexConverter.git (push)
 ```
 
-## 🌿 Creating a Branch and Making Changes [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 🌿 Creating a Branch and Making Changes  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 
 ### 1. Create a new feature branch
 ```bash
@@ -101,7 +109,9 @@ git commit -m "added logging interval functionality"
 git push -u origin my-feature-branch
 ```
 
-## 🔁 Submitting a Pull Request [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 🔁 Submitting a Pull Request  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 ### 1. Go to your fork on GitHub
 
 ### 2. Click “Compare & pull request”
@@ -114,7 +124,9 @@ Compare branch = your feature branch
 
 ### 4. Add a description and click “Create pull request”
 
-## 🔄 Syncing Your Fork With Latest Changes [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 🔄 Syncing Your Fork With Latest Changes  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 To update your fork with changes from the original main branch: (line-by-line)
 ```bash
 git fetch upstream
@@ -123,7 +135,9 @@ git merge upstream/main
 git push origin main
 ```
 
-## 💻 Resuming Work After Reboot [⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
+## 💻 Resuming Work After Reboot  
+
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 After restarting your PC:
 
 ### 1.Open Git Bash
