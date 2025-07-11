@@ -67,7 +67,12 @@ Modes of input include:
 
 ## 📦 Installation 
 
-## - Local installation
+## • Local installation
+
+1\. Make sure Git is installed.
+    - To install Git you may follow this guide starting @ 2:11 to 4:55
+    [![Watch on YouTube](https://img.shields.io/badge/Watch_on-YouTube-red?logo=youtube)](https://www.youtube.com/watch?v=tRZGeaHPoaw)
+
 ```bash
 git clone https://github.com/Cyaltie/Batch-RinexConverter.git
 cd Batch-RinexConverter
