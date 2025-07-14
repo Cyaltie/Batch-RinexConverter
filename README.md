@@ -29,6 +29,7 @@ Modes of input include:
 ---
 
 ## ✨ Planned Features (we can use this are as a sort of checklist to be edited when the program is finished.)
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 - Takes in raw GNSS data (.m** and .T02) and converts it into Rinex files 🟢 **100% done**
     - For leica sites (.m**) 🟢
         - recognize file type from zip - 100% done 🟢
@@ -56,7 +57,7 @@ Modes of input include:
 ---
 
 ## 🛠 Prerequisites (**For code input**)
-
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 - Python 3.x installed
 - Interpreter installed (VSCode, notepad++, etc.)
 - Required utilities (`mdb2rinex`, `gfzrnx`, etc.) (have at least 15 mb free space for all required dependecies) refer to Installation for setup [prerequisites folder](prerequisites/)
@@ -66,7 +67,7 @@ Modes of input include:
 ---
 
 ## 📦 Installation 
-
+[⬆️ Back to Top](#-collaborator-guide-how-to-work-on-this-repository)
 ## 📖 Contributor Guide
 
 If you're a collaborator and want to propose changes, follow the detailed step-by-step guide here:  
