@@ -38,16 +38,16 @@ Modes of input include:
         - zip all files from same station to 1 file with correct extension in an output folder - 100% done 🟢
         - handles multiple stations and start and end dates - 100% done 🟢
 
-    - For trimble sites (.T02)<sup>2 🔴 **87.5% done**
+    - For trimble sites (.T02)<sup>2 🟢 **100% done**
         - recognize file type from zip - 100% done 🟢
         - unzip it in a separate folder - 100% done 🟢
-        - open cmd to access convertToRinex for conversion - 50% done 🔴 *nagkaproblema in accessing convertToRinex.exe
-        - use gfzrnx to clean header, logging interval, version change, hatanaka - 25% done 🔴
+        - open cmd to access convertToRinex for conversion - 100% done 🟢
+        - use gfzrnx to clean header, logging interval, version change, hatanaka - 100% done 🟢
         - zip all files from same station to 1 file with correct extension in an output folder - 100% done 🟢
         - handles multiple stations - 100% done 🟢
 
-- Supports Hatanaka compression 🔴
-- Works with multiple Leica `.m00` and Trimble `.t02` files simultaneously 🔴
+- Supports Hatanaka compression 🟢
+- Works with multiple Leica `.m00` and Trimble `.t02` files simultaneously 🔴<sup>2
 - Integrate a UI (preferably based on ver4\.3c ) to make the program user friendly 🟢|🔴 <sup>3
 
 2 not debugged or tested  
