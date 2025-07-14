@@ -48,7 +48,7 @@ Modes of input include:
         - handles multiple stations - 100% done 🟢
 
 - Supports Hatanaka compression 🟢
-- Works with multiple Leica `.m00` and Trimble `.t02` files simultaneously 🔴<sup>2
+- Works with multiple Leica `.m00` and Trimble `.t02` files simultaneously 🟢
 - Integrate a UI (preferably based on ver4\.3c ) to make the program user friendly 🟢|🔴 <sup>3
 
 2 not debugged or tested  
