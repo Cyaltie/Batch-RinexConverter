@@ -18,13 +18,13 @@ Modes of input include:
 ---
 
 ## 📖 Table of Contents
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Google Colab](#google-colab)
-- [Contributing](#contributing)
-- [License](#license)
+- [Batch Rinex Converter](#batch-rinex-converter)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [✨ Planned Features (we can use this are as a sort of checklist to be edited when the program is finished.)](#-planned-features-we-can-use-this-are-as-a-sort-of-checklist-to-be-edited-when-the-program-is-finished)
+  - [🛠 Prerequisites (**For code input**)](#-prerequisites-for-code-input)
+  - [📦 Installation](#-installation)
+  - [📖 Contributor Guide](#-contributor-guide)
+  - [-](#-)
 
 ---
 
