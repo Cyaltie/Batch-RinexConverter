@@ -14,7 +14,7 @@ class RINEXConverter:
         self.setup_directories()
         self.setup_logging()
         self.hour_letters = {i: chr(ord('a') + i) for i in range(24)}
-        self.navigation_types = ['n', 'g', 'l', 'q', 'c', 'j', 'i', 'h']
+        self.navigation_types = ['n', 'g', 'l', 'q', 'c', 'j', 'i', 'h', 'f']
 
     def setup_directories(self):
         self.base_dir = Path("C:/RNXConverter")
@@ -22,12 +22,14 @@ class RINEXConverter:
         self.input_raw_dir = self.base_dir / "Input" / "Raw"
         self.temp_dir = self.base_dir / "temp"
         self.final_dir = self.base_dir / "Output" / "Final"
+        self.final_temp_dir = self.final_dir / "temp"
         
         # Create directories
         self.input_dir.mkdir(parents=True, exist_ok=True)
         self.input_raw_dir.mkdir(parents=True, exist_ok=True)
         self.temp_dir.mkdir(parents=True, exist_ok=True)
         self.final_dir.mkdir(parents=True, exist_ok=True)
+        self.final_temp_dir.mkdir(parents=True, exist_ok=True)
 
     def setup_logging(self):
         log_file = self.base_dir / "rinex_converter.log"
@@ -306,8 +308,8 @@ class RINEXConverter:
             self.logger.error(f"Error running convertToRinex: {e}")
             self.logger.error(f"STDERR: {e.stderr}")
 
-    def fix_rinex_headers(self, site: str, doy: int, year: int):
-        """Fix RINEX headers using gfzrnx"""
+    def convert_rinex_version_and_logging(self, site: str, doy: int, year: int, target_version: str, logging_interval: int):
+        """Convert RINEX version and apply logging interval as the first step"""
         doy_str = f"{doy:03d}"
         year_str = f"{year % 100:02d}"
         
@@ -324,59 +326,76 @@ class RINEXConverter:
             self.logger.warning(f"No RINEX files found for pattern: {rinex_pattern}")
             return
         
+        for rinex_file in rinex_files:
+            output_file = self.final_temp_dir / rinex_file.name
+            
+            if target_version == "2":
+                # For version 2: convert to version 2
+                cmd = ["gfzrnx", "-finp", rinex_file.name, "-fout", str(output_file), "-smp", str(logging_interval), "-q", "-vo", "2", "-f"]
+                self.logger.info(f"Converting to RINEX v2 and setting up for {rinex_file.name}")
+            else:
+                # For version 3: apply logging interval
+                cmd = ["gfzrnx", "-finp", rinex_file.name, "-fout", str(output_file), "-smp", str(logging_interval), "-q", "-kv", "-f"]
+                self.logger.info(f"Applying logging interval {logging_interval}s to {rinex_file.name}")
+            
+            try:
+                result = subprocess.run(cmd, cwd=temp_dir, 
+                                      capture_output=True, text=True, check=True)
+                self.logger.info(f"Version/logging conversion completed for {rinex_file.name}")
+                if result.stdout:
+                    self.logger.info(f"STDOUT: {result.stdout}")
+            except subprocess.CalledProcessError as e:
+                self.logger.error(f"Error in version/logging conversion: {e}")
+                self.logger.error(f"STDERR: {e.stderr}")
+                # Copy original file if conversion fails
+                shutil.copy2(rinex_file, output_file)
+                self.logger.warning(f"Copied original file due to conversion error: {rinex_file.name}")
+
+    def fix_rinex_headers(self, site: str, doy: int, year: int):
+        """Fix RINEX headers using gfzrnx - now operates on files in final temp directory"""
+        doy_str = f"{doy:03d}"
+        year_str = f"{year % 100:02d}"
+        
+        if not self.final_temp_dir.exists():
+            self.logger.warning(f"Final temp directory not found: {self.final_temp_dir}")
+            return
+        
+        # Find RINEX files in final temp directory
+        rinex_pattern = f"{site}{doy_str}*.{year_str}o"
+        rinex_files = list(self.final_temp_dir.glob(rinex_pattern))
+        
+        if not rinex_files:
+            self.logger.warning(f"No RINEX files found for pattern: {rinex_pattern}")
+            return
+        
         header_file = self.base_dir / "pagenetHDR.txt"
         
         for rinex_file in rinex_files:
-            output_file = temp_dir / f"fixed_{rinex_file.name}"
+            output_file = self.final_temp_dir / f"fixed_{rinex_file.name}"
             
             if header_file.exists():
                 cmd = ["gfzrnx", "-finp", rinex_file.name, "-fout", output_file.name,
-                       "-crux", str(header_file), "-hded", "-q"]
+                       "-crux", str(header_file), "-hded", "-q", "-kv"]
                 
                 try:
-                    result = subprocess.run(cmd, cwd=temp_dir, 
+                    result = subprocess.run(cmd, cwd=self.final_temp_dir, 
                                           capture_output=True, text=True, check=True)
                     self.logger.info(f"Header fixed for {rinex_file.name}")
+                    if result.stdout:
+                        self.logger.info(f"STDOUT: {result.stdout}")
                     
                     # Replace original with fixed version
                     rinex_file.unlink()
                     output_file.rename(rinex_file)
                     
                 except subprocess.CalledProcessError as e:
-                    self.logger.error(f"Error fixing headers: {e}")
+                    self.logger.error(f"Error fixing headers for {rinex_file.name}: {e}")
                     self.logger.error(f"STDERR: {e.stderr}")
+                    # Remove the failed output file if it exists
+                    if output_file.exists():
+                        output_file.unlink()
             else:
                 self.logger.warning("Header file not found, skipping header fix")
-
-    def convert_rinex_version(self, site: str, doy: int, year: int, target_version: str):
-        """Convert RINEX to specified version"""
-        if target_version == "3":
-            return  # Already in version 3
-        
-        doy_str = f"{doy:03d}"
-        year_str = f"{year % 100:02d}"
-        
-        temp_dir = self.input_raw_dir / "temp"
-        rinex_pattern = f"{site}{doy_str}*.{year_str}o"
-        rinex_files = list(temp_dir.glob(rinex_pattern))
-        
-        for rinex_file in rinex_files:
-            output_file = temp_dir / f"{rinex_file.stem}_rx2{rinex_file.suffix}"
-            
-            cmd = ["gfzrnx", "-finp", rinex_file.name, "-fout", output_file.name, "-vo", "2"]
-            
-            try:
-                result = subprocess.run(cmd, cwd=temp_dir, 
-                                      capture_output=True, text=True, check=True)
-                self.logger.info(f"Converted to RINEX v2: {rinex_file.name}")
-                
-                # Replace original with converted version
-                rinex_file.unlink()
-                output_file.rename(rinex_file)
-                
-            except subprocess.CalledProcessError as e:
-                self.logger.error(f"Error converting RINEX version: {e}")
-                self.logger.error(f"STDERR: {e.stderr}")
 
     def create_zip_files(self, site: str, doy: int, year: int, include_nav: bool):
         """Create zip files with RINEX data using the new naming convention"""
@@ -385,9 +404,9 @@ class RINEXConverter:
         
         temp_dir = self.input_raw_dir / "temp"
         
-        # Find observation files
+        # Find observation files in final temp directory
         obs_pattern = f"{site}{doy_str}*.{year_str}o"
-        obs_files = list(temp_dir.glob(obs_pattern))
+        obs_files = list(self.final_temp_dir.glob(obs_pattern))
         
         for obs_file in obs_files:
             # Create new zip name in format: sitenamedoy.yro.zip (e.g., PAPI0950.23o.zip)
@@ -399,7 +418,7 @@ class RINEXConverter:
             files_to_zip = [obs_file]
             
             if include_nav:
-                # Find corresponding navigation files
+                # Find corresponding navigation files in temp directory
                 base_name = obs_file.stem
                 for nav_type in self.navigation_types:
                     nav_pattern = f"{base_name}.{year_str}{nav_type}"
@@ -411,14 +430,19 @@ class RINEXConverter:
             try:
                 # Create file list for 7zip
                 file_list = []
+                working_dir = None
+                
                 for file_path in files_to_zip:
                     if file_path.exists():
+                        # Use relative path and set working directory
+                        if working_dir is None:
+                            working_dir = file_path.parent
                         file_list.append(file_path.name)
                 
-                if file_list:
+                if file_list and working_dir:
                     # Use 7zip command
                     cmd = ["7z", "a", "-tzip", str(zip_path)] + file_list
-                    result = subprocess.run(cmd, cwd=temp_dir, 
+                    result = subprocess.run(cmd, cwd=working_dir, 
                                           capture_output=True, text=True, check=True)
                     self.logger.info(f"Created zip file with 7zip: {zip_path.name}")
                     for file_name in file_list:
@@ -524,6 +548,10 @@ class RINEXConverter:
         if self.temp_dir.exists():
             shutil.rmtree(self.temp_dir)
         
+        # Clean final temp directory
+        if self.final_temp_dir.exists():
+            shutil.rmtree(self.final_temp_dir)
+        
         self.logger.info("Cleanup completed")
 
     def run(self):
@@ -564,29 +592,44 @@ class RINEXConverter:
             elif site_type == 'trimble':
                 self.process_trimble_files(site, doy, year)
             
-            # Step 5: Fix headers
+            # Step 5: Convert RINEX version and apply logging interval FIRST
+            self.logger.info(f"Step 5: Converting RINEX version and applying logging interval for {site} DOY {doy}")
+            self.convert_rinex_version_and_logging(site, doy, year, config['rinex_version'], config['logging_interval'])
+            
+            # Step 6: Fix headers AFTER version/logging conversion
+            self.logger.info(f"Step 6: Fixing RINEX headers for {site} DOY {doy}")
             self.fix_rinex_headers(site, doy, year)
             
-            # Step 6: Convert RINEX version if needed
-            if config['rinex_version'] == '2':
-                self.convert_rinex_version(site, doy, year, '2')
-            
-            # Step 6a: Create zip files
+            # Step 7: Create zip files
+            self.logger.info(f"Step 7: Creating zip files for {site} DOY {doy}")
             self.create_zip_files(site, doy, year, config['include_nav'])
             
-            # Step 7: Apply Hatanaka compression if requested
+            # Step 8: Apply Hatanaka compression if requested
             if config['hatanaka_compression']:
+                self.logger.info(f"Step 8: Applying Hatanaka compression for {site} DOY {doy}")
                 self.apply_hatanaka_compression(site, doy, year)
         
-        # Step 8-9: Cleanup
+        # Step 9: Cleanup temporary files
+        self.logger.info("Step 9: Cleaning up temporary files...")
         self.cleanup_temporary_files()
         
-        self.logger.info("Processing completed successfully!")
+        self.logger.info("================ RINEX CONVERTER COMPLETE ================")
+        self.logger.info(f"Processed {len(site_groups)} site/day combinations")
+        self.logger.info(f"Output files are in: {self.final_dir}")
+
 
 def main():
-    converter = RINEXConverter()
-    converter.run()
-    input("\nPress Enter to exit...")
+    """Main function to run the RINEX converter"""
+    try:
+        converter = RINEXConverter()
+        converter.run()
+    except KeyboardInterrupt:
+        print("\nProcess interrupted by user")
+        sys.exit(1)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
