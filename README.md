@@ -39,7 +39,7 @@ Modes of input include:
         - zip all files from same station to 1 file with correct extension in an output folder - 100% done 🟢
         - handles multiple stations and start and end dates - 100% done 🟢
 
-    - For trimble sites (.T02)<sup>2 🟢 **100% done**
+    - For trimble sites (.T02)🟢 **100% done**
         - recognize file type from zip - 100% done 🟢
         - unzip it in a separate folder - 100% done 🟢
         - open cmd to access convertToRinex for conversion - 100% done 🟢
