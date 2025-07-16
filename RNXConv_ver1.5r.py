@@ -20,7 +20,7 @@ class RINEXConverter:
         self.base_dir = Path("C:/RNXConverter")
         self.input_dir = self.base_dir / "Input"
         self.input_raw_dir = self.base_dir / "Input" / "Raw"
-        self.temp_dir = self.base_dir / "temp"
+        self.temp_dir = self.input_raw_dir / "temp"
         self.final_dir = self.base_dir / "Output" / "Final"
         self.final_temp_dir = self.final_dir / "temp"
         
@@ -110,13 +110,6 @@ class RINEXConverter:
     def find_and_extract_zip_files(self, config: dict) -> List[dict]:
         """Find and extract zip files matching the criteria"""
         extracted_files = []
-        
-        # Debug: List all files in input directory
-        self.logger.info(f"Scanning input directory: {self.input_dir}")
-        all_files = list(self.input_dir.glob("*"))
-        self.logger.info(f"Found {len(all_files)} files in input directory:")
-        for file in all_files:
-            self.logger.info(f"  - {file.name}")
         
         current_date = config['start_date']
         end_date = config['end_date']
@@ -313,7 +306,7 @@ class RINEXConverter:
         doy_str = f"{doy:03d}"
         year_str = f"{year % 100:02d}"
         
-        temp_dir = self.input_raw_dir / "temp"
+        temp_dir =  self.temp_dir
         if not temp_dir.exists():
             self.logger.warning(f"Temp directory not found: {temp_dir}")
             return
@@ -556,9 +549,6 @@ class RINEXConverter:
 
     def run(self):
         config = self.get_user_input()
-        
-        # Debug: Scan for zip files first
-        self.scan_for_zip_files()
         
         # Step 1: Find and extract zip files
         self.logger.info("Step 1: Finding and extracting zip files...")
