@@ -18,8 +18,6 @@ Modes of input include:
 ---
 
 ## 📖 Table of Contents
-- [Batch Rinex Converter](#batch-rinex-converter)
-  - [📖 Table of Contents](#-table-of-contents)
   - [✨ Planned Features (we can use this are as a sort of checklist to be edited when the program is finished.)](#-planned-features-we-can-use-this-are-as-a-sort-of-checklist-to-be-edited-when-the-program-is-finished)
   - [🛠 Prerequisites (**For code input**)](#-prerequisites-for-code-input)
   - [📦 Installation](#-installation)
